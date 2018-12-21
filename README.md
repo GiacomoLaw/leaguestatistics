@@ -4,7 +4,7 @@ Statistics for a specific player on LoL
 
 ## Usage
 
-Install Riot Watcher via PIP: `pip install riotwatcher`
+Install [Riot Watcher](https://github.com/pseudonym117/Riot-Watcher) via PIP: `pip install riotwatcher`
 
 Place your API key from Riot in `apisettings.py`. You can get it [here](https://developer.riotgames.com/).
 
