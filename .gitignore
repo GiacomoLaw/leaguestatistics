@@ -59,4 +59,4 @@ target/
 
 # Custom
 .idea/
-lolstats/apisettings.py
+apisettings.py
