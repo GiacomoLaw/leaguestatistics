@@ -1,0 +1,12 @@
+[{"richname":  "Brazil", "region":  "br", "platform":  "br1"},
+  {"richname":  "Europe Nordic and East", "region":  "eune", "platform":  "eun1"},
+  {"richname":  "Europe West", "region":  "euw", "platform":  "euw1"},
+  {"richname":  "Japan", "region":  "jp", "platform":  "jp1"},
+  {"richname":  "Korea", "region":  "kr", "platform":  "kr1"},
+  {"richname":  "Latin America North", "region":  "lan", "platform":  "la1"},
+  {"richname":  "Latin America South", "region":  "las", "platform":  "la2"},
+  {"richname":  "North America", "region":  "na", "platform":  "na"},
+  {"richname":  "Oceania", "region":  "oce", "platform":  "oc1"},
+  {"richname":  "Turkey", "region":  "tr", "platform":  "tr1"},
+  {"richname":  "Russia", "region":  "ru", "platform":  "ru"},
+  {"richname":  "Public Beta", "region":  "pbe", "platform":  "pbe1"}]
