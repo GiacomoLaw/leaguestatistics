@@ -24,10 +24,10 @@ def runmain():
 			losses = (element['losses'])
 			total_games = wins + losses
 			rate = round(wins*100/total_games, 2)
-			print('\n\nCurrent rank: ', current_rank, '| League Points: ', points)
+			print('Current rank: ', current_rank, '| League Points: ', points)
 			print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
 			print('Win rate: ', rate, '%')
-			print('\n\nPress any key to continue')
+			print("\n\nPress any key to continue")
 			fun.waitforkey()
 			break
 	else:
