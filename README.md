@@ -11,3 +11,5 @@ Place your API key from Riot in `apisettings.py`. You can get it [here](https://
 Run `lolstats.py`, and type in the summoner name you want. Stats for rank solo are gathered by default, more options will be added at a later date.
 
 Make sure that the server is correct (na1 for North America). Options to choose your server will be added at a later date.
+
+**Do not leave spaces in the summoner name, otherwise the script will glitch.**

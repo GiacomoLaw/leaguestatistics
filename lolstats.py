@@ -5,13 +5,14 @@ sumname = input('Your summoner name: ')
 
 watcher = RiotWatcher(apisettings.yourapikey)
 
+# to do - region select
 my_region = 'euw1'
 
 me = watcher.summoner.by_name(my_region, sumname)
 
 my_ranked_stats = watcher.league.positions_by_summoner(my_region, me['id'])
 # print(my_ranked_stats)
-# ^ only enabled for debugging
+# ^ only enabled for debugging and bui
 
 for element in my_ranked_stats:
 	if element['queueType'] == 'RANKED_SOLO_5x5':
@@ -26,4 +27,4 @@ for element in my_ranked_stats:
 		print('Win rate: ', rate, '%')
 		break
 else:
-	print('Error - no data found')
+	print('Error - no data found - check server, and summoner name.')
