@@ -1,6 +1,7 @@
 def runmain():
 	from riotwatcher import RiotWatcher
-	import apisettings
+	from lib import apisettings
+	from lib import functions
 
 	sumname = input('Your summoner name: ')
 
@@ -26,6 +27,7 @@ def runmain():
 			print('Current rank: ', current_rank, '| League Points: ', points)
 			print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
 			print('Win rate: ', rate, '%')
+
 			break
 	else:
 		print('Error - no data found - check server, and summoner name.')
