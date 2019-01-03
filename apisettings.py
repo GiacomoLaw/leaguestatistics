@@ -1,1 +1,0 @@
-yourapikey = 'YOUR API KEY'
