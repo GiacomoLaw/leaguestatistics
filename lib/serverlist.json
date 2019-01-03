@@ -1,0 +1,12 @@
+[{"region":  "br", "platform":  "br1"},
+  {"region":  "eune", "platform":  "eun1"},
+  {"region":  "euw", "platform":  "euw1"},
+  {"region":  "jp", "platform":  "jp1"},
+  {"region":  "kr", "platform":  "kr1"},
+  {"region":  "lan", "platform":  "la1"},
+  {"region":  "las", "platform":  "la2"},
+  {"region":  "na", "platform":  "na"},
+  {"region":  "oce", "platform":  "oc1"},
+  {"region":  "tr", "platform":  "tr1"},
+  {"region":  "ru", "platform":  "ru"},
+  {"region":  "pbe", "platform":  "pbe1"}]
