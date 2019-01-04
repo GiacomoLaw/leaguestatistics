@@ -16,4 +16,4 @@ else:
 	createfile.write("'")
 	createfile.close()
 	print("API file created")
-	lolstats.runmain()
+	fun.runmain()
