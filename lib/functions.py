@@ -1,8 +1,12 @@
 import msvcrt as m
 import requests
+import sys
+
+# main program
 
 
 def runmain():
+	global element
 	from riotwatcher import RiotWatcher
 	from lib import apisettings
 
@@ -20,68 +24,79 @@ def runmain():
 
 	for element in my_ranked_stats:
 		if element['queueType'] == 'RANKED_SOLO_5x5':
-			current_rank = (element['tier']) + '  ' + (element['rank'])
-			points = (element['leaguePoints'])
-			wins = (element['wins'])
-			losses = (element['losses'])
-			total_games = wins + losses
-			rate = round(wins*100/total_games, 2)
-			print('\n\nCurrent rank: ', current_rank, '| League Points: ', points)
-			print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
-			print('Win rate: ', rate, '%')
-			print('\n\nPress any key to continue')
-			waitforkey()
-			break
+			statgatherer()
 	else:
 		print('Error - no data found - check server, and summoner name.')
 
+
+# wait for a key press
 
 def waitforkey():
 	m.getch()
 
 
+# server select process - starts at listing servers
+
 def serverselect():
 	global my_region
 	url = "https://raw.githubusercontent.com/GiacomoLaw/lolstats/master/lib/serverlist.json"
 	data = requests.get(url).json()
-	for index, element in enumerate(data, start=1):
-		print("{}. {}".format(index, element['richname']))
-	server_choice = input("What server do you want? Enter the number. ")
+	for index, regionelement in enumerate(data, start=1):
+		print("\n{}. {}".format(index, regionelement['richname']))
+	server_choice = input("\n\nWhat server do you want? Enter the number. ")
 	if server_choice == '1':
 		my_region = 'br1'
-		print('Server set to Brazil.')
+		print('\nServer set to Brazil.')
 	elif server_choice == '2':
 		my_region = 'eun1'
-		print('Server set to Europe Nordic and East.')
+		print('\nServer set to Europe Nordic and East.')
 	elif server_choice == '3':
 		my_region = 'euw1'
-		print('Server set to Europe West.')
+		print('\nServer set to Europe West.')
 	elif server_choice == '4':
 		my_region = 'jp1'
-		print('Server set to Japan.')
+		print('\nServer set to Japan.')
 	elif server_choice == '5':
 		my_region = 'kr1'
-		print('Server set to Korea.')
+		print('\nServer set to Korea.')
 	elif server_choice == '6':
 		my_region = 'la1'
-		print('Server set to Latin America North.')
+		print('\nServer set to Latin America North.')
 	elif server_choice == '7':
 		my_region = 'la2'
-		print('Server set to Latin America South.')
+		print('\nServer set to Latin America South.')
 	elif server_choice == '8':
 		my_region = 'na'
-		print('Server set to North America.')
+		print('\nServer set to North America.')
 	elif server_choice == '9':
 		my_region = 'oc1'
-		print('Server set to Oceania.')
+		print('\nServer set to Oceania.')
 	elif server_choice == '10':
 		my_region = 'tr1'
-		print('Server set to Turkey.')
+		print('\nServer set to Turkey.')
 	elif server_choice == '11':
 		my_region = 'ru'
-		print('Server set to Russia.')
+		print('\nServer set to Russia.')
 	elif server_choice == '12':
 		my_region = 'pbe1'
-		print('Server set to Public Beta.')
+		print('\nServer set to Public Beta.')
 	else:
-		print('Error. Select one of the numbers.')
+		print('\nError. Select one of the numbers.')
+
+
+# gathers stats
+
+def statgatherer():
+	global element
+	current_rank = (element['tier']) + '  ' + (element['rank'])
+	points = (element['leaguePoints'])
+	wins = (element['wins'])
+	losses = (element['losses'])
+	total_games = wins + losses
+	rate = round(wins * 100 / total_games, 2)
+	print('\n\nCurrent rank: ', current_rank, '| League Points: ', points)
+	print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
+	print('Win rate: ', rate, '%')
+	print('\n\nPress any key to continue')
+	waitforkey()
+	sys.exit()
