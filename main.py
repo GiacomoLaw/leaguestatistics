@@ -1,8 +1,10 @@
 from pathlib import Path
 from lib import functions as fun
 
+# set path of api settings file
 apisettingspath = Path("lib/apisettings.py")
 
+# check if the api file exists - if it does, run the main program - if it doesn't, create it
 if apisettingspath.exists():
 	print("API file present - note that the API key expires every 24 hours")
 	fun.runmain()
