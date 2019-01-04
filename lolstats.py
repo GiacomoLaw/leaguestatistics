@@ -1,3 +1,5 @@
+global my_region
+
 def runmain():
 	from riotwatcher import RiotWatcher
 	from lib import apisettings
@@ -7,8 +9,8 @@ def runmain():
 
 	watcher = RiotWatcher(apisettings.yourapikey)
 
-	# to do - region select
-	my_region = 'euw1'
+	fun.serverselect()
+	print(my_region)
 
 	me = watcher.summoner.by_name(my_region, sumname)
 
