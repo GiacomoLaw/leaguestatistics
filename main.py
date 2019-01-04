@@ -1,11 +1,11 @@
 from pathlib import Path
-import lolstats
+from lib import functions as fun
 
 apisettingspath = Path("lib/apisettings.py")
 
 if apisettingspath.exists():
 	print("API file present - note that the API key expires every 24 hours")
-	lolstats.runmain()
+	fun.runmain()
 else:
 	print("No API file - creating one now")
 	createfile = open("lib/apisettings.py", "w+")
