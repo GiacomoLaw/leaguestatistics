@@ -17,7 +17,7 @@ def runmain():
 	# ^ only enabled for debugging and bui
 
 	for element in my_ranked_stats:
-		if element['queueType'] == 'RANKED_SOLO_5x5':
+		if element['queueType'] == 'RANKED_SOLO_5x5'
 			current_rank = (element['tier']) + '  ' + (element['rank'])
 			points = (element['leaguePoints'])
 			wins = (element['wins'])
