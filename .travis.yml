@@ -4,4 +4,5 @@ python: "3.6"
 install:
   - pip install riotwatcher
 
-script: test.py
+script:
+  - python -m unittest discover
