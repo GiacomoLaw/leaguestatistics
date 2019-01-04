@@ -1,8 +1,12 @@
 import msvcrt as m
 import requests
+import sys
+
+# main program
 
 
 def runmain():
+	global element
 	from riotwatcher import RiotWatcher
 	from lib import apisettings
 
@@ -20,32 +24,25 @@ def runmain():
 
 	for element in my_ranked_stats:
 		if element['queueType'] == 'RANKED_SOLO_5x5':
-			current_rank = (element['tier']) + '  ' + (element['rank'])
-			points = (element['leaguePoints'])
-			wins = (element['wins'])
-			losses = (element['losses'])
-			total_games = wins + losses
-			rate = round(wins*100/total_games, 2)
-			print('\n\nCurrent rank: ', current_rank, '| League Points: ', points)
-			print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
-			print('Win rate: ', rate, '%')
-			print('\n\nPress any key to continue')
-			waitforkey()
-			break
+			statgatherer()
 	else:
 		print('Error - no data found - check server, and summoner name.')
 
+
+# wait for a key press
 
 def waitforkey():
 	m.getch()
 
 
+# server select process - starts at listing servers
+
 def serverselect():
 	global my_region
 	url = "https://raw.githubusercontent.com/GiacomoLaw/lolstats/master/lib/serverlist.json"
 	data = requests.get(url).json()
-	for index, element in enumerate(data, start=1):
-		print("\n{}. {}".format(index, element['richname']))
+	for index, regionelement in enumerate(data, start=1):
+		print("\n{}. {}".format(index, regionelement['richname']))
 	server_choice = input("\n\nWhat server do you want? Enter the number. ")
 	if server_choice == '1':
 		my_region = 'br1'
@@ -85,3 +82,21 @@ def serverselect():
 		print('\nServer set to Public Beta.')
 	else:
 		print('\nError. Select one of the numbers.')
+
+
+# gathers stats
+
+def statgatherer():
+	global element
+	current_rank = (element['tier']) + '  ' + (element['rank'])
+	points = (element['leaguePoints'])
+	wins = (element['wins'])
+	losses = (element['losses'])
+	total_games = wins + losses
+	rate = round(wins * 100 / total_games, 2)
+	print('\n\nCurrent rank: ', current_rank, '| League Points: ', points)
+	print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
+	print('Win rate: ', rate, '%')
+	print('\n\nPress any key to continue')
+	waitforkey()
+	sys.exit()
