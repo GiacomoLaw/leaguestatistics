@@ -41,9 +41,6 @@ def waitforkey():
 	m.getch()
 
 
-my_region = 'euw'
-
-
 def serverselect():
 	global my_region
 	url = "https://raw.githubusercontent.com/GiacomoLaw/lolstats/master/lib/serverlist.json"
