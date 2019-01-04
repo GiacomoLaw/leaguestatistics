@@ -6,7 +6,11 @@ def waitforkey():
 	m.getch()
 
 
+my_region = 'euw'
+
+
 def serverselect():
+	global my_region
 	url = "https://raw.githubusercontent.com/GiacomoLaw/lolstats/master/lib/serverlist.json"
 	data = requests.get(url).json()
 	for index, element in enumerate(data, start=1):
@@ -50,6 +54,3 @@ def serverselect():
 		print('Server set to Public Beta.')
 	else:
 		print('Error. Select one of the numbers.')
-
-
-print(serverselect())
