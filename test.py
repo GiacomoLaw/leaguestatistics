@@ -1,1 +1,1 @@
-from lib import functions
+print("Test")
