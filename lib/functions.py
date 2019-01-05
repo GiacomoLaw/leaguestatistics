@@ -81,6 +81,7 @@ def serverselect():
 		print('\nServer set to Public Beta.')
 	else:
 		print('\nError. Select one of the numbers.')
+		sys.exit("Valid number not selected.")
 
 
 # gathers stats
@@ -97,7 +98,7 @@ def statgatherer():
 	print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
 	print('Win rate: ', rate, '%')
 	waitforkey()
-	sys.exit()
+	sys.exit(0)
 
 
 # allows user to save player, wipe list
@@ -116,6 +117,7 @@ def saveplayer():
 		players.close()
 	elif userchoice == '3':
 		return
+		sys.exit("Valid number not selected.")
 
 
 # returns list of saved players
