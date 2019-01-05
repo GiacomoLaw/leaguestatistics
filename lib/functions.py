@@ -31,7 +31,7 @@ def runmain():
 # wait for a key press
 
 def waitforkey():
-	input("\n\nPress Enter to continue...")
+	input("\n\nPress Enter to continue...\n")
 
 
 # server select process - starts at listing servers
@@ -81,6 +81,7 @@ def serverselect():
 		print('\nServer set to Public Beta.')
 	else:
 		print('\nError. Select one of the numbers.')
+		waitforkey()
 		sys.exit("Valid number not selected.")
 
 
@@ -104,7 +105,7 @@ def statgatherer():
 # allows user to save player, wipe list
 
 def saveplayer():
-	userchoice = input("What do you want to do?\n\n1. Add player\n\n2. Wipe list\n\n3. Leave\n")
+	userchoice = input("Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
 	if userchoice == '1':
 		playername = input("What is the players name?\n")
 		players = open("players.txt", "a+")
@@ -116,7 +117,12 @@ def saveplayer():
 		players.write("")
 		players.close()
 	elif userchoice == '3':
+		getsavedplayer()
+	elif userchoice == '4':
 		return
+	else:
+		print("Please select a valid option.")
+		waitforkey()
 		sys.exit("Valid number not selected.")
 
 
@@ -125,5 +131,9 @@ def saveplayer():
 def getsavedplayer():
 	text_file = open("players.txt", "r")
 	lines = text_file.read().split(',')
-	print(lines) # for checking only
 	text_file.close()
+	for index, lines in enumerate(lines, start=1):
+		print("\n", index, "-", lines)
+
+
+# todo: remove last blank line
