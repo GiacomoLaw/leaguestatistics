@@ -1,4 +1,3 @@
-import msvcrt as m
 import requests
 import sys
 
@@ -32,7 +31,7 @@ def runmain():
 # wait for a key press
 
 def waitforkey():
-	m.getch()
+	input("\n\nPress Enter to continue...")
 
 
 # server select process - starts at listing servers
@@ -97,6 +96,5 @@ def statgatherer():
 	print('\n\nCurrent rank: ', current_rank, '| League Points: ', points)
 	print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
 	print('Win rate: ', rate, '%')
-	print('\n\nPress any key to continue')
 	waitforkey()
 	sys.exit()
