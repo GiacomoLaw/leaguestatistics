@@ -1,4 +1,5 @@
-# LoL Stats
+[![Build Status](https://travis-ci.com/GiacomoLaw/leaguestatistics.svg?branch=master)](https://travis-ci.com/GiacomoLaw/leaguestatistics)
+# League Statistics
 
 Statistics for a specific player on LoL
 
