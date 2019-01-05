@@ -125,6 +125,5 @@ def saveplayer():
 def getsavedplayer():
 	text_file = open("players.txt", "r")
 	lines = text_file.read().split(',')
-	print(lines)
-	print(len(lines))
+	print(lines) # for checking only
 	text_file.close()
