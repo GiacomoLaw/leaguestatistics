@@ -100,20 +100,29 @@ def statgatherer():
 	sys.exit()
 
 
+# allows user to save player, wipe list
+
 def saveplayer():
 	userchoice = input("What do you want to do?\n\n1. Add player\n\n2. Wipe list\n\n3. Leave\n")
 	if userchoice == '1':
-		playername = input("What is the players name? ")
+		playername = input("What is the players name?\n")
 		players = open("players.txt", "a+")
 		players.write(playername)
-		players.write(", ")
+		players.write(",")
 		players.close()
 	elif userchoice == '2':
 		players = open("players.txt", "w+")
-		players.write(" ")
+		players.write("")
 		players.close()
 	elif userchoice == '3':
 		return
 
 
-saveplayer()
+# returns list of saved players
+
+def getsavedplayer():
+	text_file = open("players.txt", "r")
+	lines = text_file.read().split(',')
+	print(lines)
+	print(len(lines))
+	text_file.close()
