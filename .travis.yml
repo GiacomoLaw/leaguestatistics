@@ -5,4 +5,4 @@ install:
   - pip install riotwatcher
 
 script:
-  - python -m unittest discover
+  - python -m lib/functions.py
