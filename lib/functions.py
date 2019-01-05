@@ -98,3 +98,22 @@ def statgatherer():
 	print('Win rate: ', rate, '%')
 	waitforkey()
 	sys.exit()
+
+
+def saveplayer():
+	userchoice = input("What do you want to do?\n\n1. Add player\n\n2. Wipe list\n\n3. Leave\n")
+	if userchoice == '1':
+		playername = input("What is the players name? ")
+		players = open("players.txt", "a+")
+		players.write(playername)
+		players.write(", ")
+		players.close()
+	elif userchoice == '2':
+		players = open("players.txt", "w+")
+		players.write(" ")
+		players.close()
+	elif userchoice == '3':
+		return
+
+
+saveplayer()
