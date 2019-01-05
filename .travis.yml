@@ -6,4 +6,4 @@ install:
 
 script:
   - cd lib
-  - python -m functions.py
+  - python functions.py
