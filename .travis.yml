@@ -5,4 +5,5 @@ install:
   - pip install riotwatcher
 
 script:
-  - python -m /lib/functions.py
+  - cd lib
+  - python -m functions.py
