@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/GiacomoLaw/leaguestatistics.svg?branch=master)](https://travis-ci.com/GiacomoLaw/leaguestatistics) [![Waffle.io - Columns and their card count](https://badge.waffle.io/GiacomoLaw/leaguestatistics.svg?columns=all)](https://waffle.io/GiacomoLaw/leaguestatistics)
+[![Build Status](https://travis-ci.com/GiacomoLaw/leaguestatistics.svg?branch=master)](https://travis-ci.com/GiacomoLaw/leaguestatistics) [![codecov](https://codecov.io/gh/GiacomoLaw/leaguestatistics/branch/master/graph/badge.svg)](https://codecov.io/gh/GiacomoLaw/leaguestatistics) [![Waffle.io - Columns and their card count](https://badge.waffle.io/GiacomoLaw/leaguestatistics.svg?columns=all)](https://waffle.io/GiacomoLaw/leaguestatistics)
 # League Statistics
 
 Statistics for a specific player on LoL
