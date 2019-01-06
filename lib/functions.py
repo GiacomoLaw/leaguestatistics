@@ -1,5 +1,8 @@
+from riotwatcher import RiotWatcher
 import requests
 import sys
+from pick import pick
+from lib import apisettings
 
 # main program
 
@@ -129,11 +132,12 @@ def saveplayer():
 # returns list of saved players
 
 def getsavedplayer():
+	global sumname
 	playerfile = open("players.txt", "r")
 	lines = playerfile.read().split(',')
 	playerfile.close()
-	filelength = len(lines)
-	del lines[filelength - 1]
-	for index, lines in enumerate(lines, start=1):
-		print("\n", index, "-", lines)
-	selectedplayer = input("Select the number of the player. ")
+	del lines[-1]
+	title = 'Please choose the summoner to load in: '
+	sumname, index = pick(lines, title)
+	print("You have picked", sumname, "will now search for stats.")
+	runmain()

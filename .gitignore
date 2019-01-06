@@ -60,3 +60,5 @@ target/
 .idea/
 apisettings.py
 lib/players\.txt
+
+players\.txt
