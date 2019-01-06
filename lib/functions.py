@@ -8,12 +8,19 @@ from lib import apisettings
 
 
 def runmain():
+	global sumname
+
+	try:
+		sumname
+	except NameError:
+		sumname = input('Your summoner name: ')
+		launchstattree()
+	else:
+		launchstattree()
+
+
+def launchstattree():
 	global element
-	from riotwatcher import RiotWatcher
-	import apisettings
-
-	sumname = input('Your summoner name: ')
-
 	watcher = RiotWatcher(apisettings.yourapikey)
 
 	serverselect()
@@ -21,8 +28,6 @@ def runmain():
 	me = watcher.summoner.by_name(my_region, sumname)
 
 	my_ranked_stats = watcher.league.positions_by_summoner(my_region, me['id'])
-	# print(my_ranked_stats)
-	# ^ only enabled for debugging and bui
 
 	for element in my_ranked_stats:
 		if element['queueType'] == 'RANKED_SOLO_5x5':
