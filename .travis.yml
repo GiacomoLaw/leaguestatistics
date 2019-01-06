@@ -3,6 +3,7 @@ python: "3.6"
 
 install:
   - pip install riotwatcher
+  - pip install pick
 
 script:
   - cd lib
