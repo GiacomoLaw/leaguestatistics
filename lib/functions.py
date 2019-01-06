@@ -1,16 +1,25 @@
+from riotwatcher import RiotWatcher
 import requests
 import sys
+from pick import pick
+import apisettings
+
 
 # main program
 
-
 def runmain():
+	global sumname
+
+	useroption = input("Do you want to save or load a summoner? ")
+	if useroption == "yes" or useroption == "y":
+		saveplayer()
+	else:
+		sumname = input('Your summoner name: ')
+		launchstattree()
+
+
+def launchstattree():
 	global element
-	from riotwatcher import RiotWatcher
-	from lib import apisettings
-
-	sumname = input('Your summoner name: ')
-
 	watcher = RiotWatcher(apisettings.yourapikey)
 
 	serverselect()
@@ -18,8 +27,6 @@ def runmain():
 	me = watcher.summoner.by_name(my_region, sumname)
 
 	my_ranked_stats = watcher.league.positions_by_summoner(my_region, me['id'])
-	# print(my_ranked_stats)
-	# ^ only enabled for debugging and bui
 
 	for element in my_ranked_stats:
 		if element['queueType'] == 'RANKED_SOLO_5x5':
@@ -31,7 +38,7 @@ def runmain():
 # wait for a key press
 
 def waitforkey():
-	input("\n\nPress Enter to continue...")
+	input("\n\nPress Enter to continue...\n")
 
 
 # server select process - starts at listing servers
@@ -81,6 +88,8 @@ def serverselect():
 		print('\nServer set to Public Beta.')
 	else:
 		print('\nError. Select one of the numbers.')
+		waitforkey()
+		sys.exit("Valid number not selected.")
 
 
 # gathers stats
@@ -97,4 +106,44 @@ def statgatherer():
 	print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
 	print('Win rate: ', rate, '%')
 	waitforkey()
-	sys.exit()
+	sys.exit(0)
+
+
+# allows user to save player, wipe list
+
+def saveplayer():
+	saveloop = True
+	while saveloop:
+		userchoice = input("Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
+		if userchoice == '1':
+			playername = input("What is the players name?\n")
+			players = open("players.txt", "a+")
+			players.write(playername)
+			players.write(",")
+			players.close()
+		elif userchoice == '2':
+			players = open("players.txt", "w+")
+			players.write("")
+			players.close()
+		elif userchoice == '3':
+			getsavedplayer()
+		elif userchoice == '4':
+			return
+		else:
+			print("Please select a valid option.")
+			waitforkey()
+			sys.exit("Valid number not selected.")
+
+
+# returns list of saved players
+
+def getsavedplayer():
+	global sumname
+	playerfile = open("players.txt", "r")
+	lines = playerfile.read().split(',')
+	playerfile.close()
+	del lines[-1]
+	title = 'Please choose the summoner to load in: '
+	sumname, index = pick(lines, title)
+	print("You have picked", sumname, "will now search for stats.")
+	launchstattree()
