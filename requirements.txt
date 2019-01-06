@@ -1,0 +1,4 @@
+pick==0.6.4
+requests==2.21.0
+requests-toolbelt==0.8.0
+riotwatcher==2.4.0
