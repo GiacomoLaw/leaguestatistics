@@ -4,18 +4,17 @@ import sys
 from pick import pick
 from lib import apisettings
 
-# main program
 
+# main program
 
 def runmain():
 	global sumname
 
-	try:
-		sumname
-	except NameError:
-		sumname = input('Your summoner name: ')
-		launchstattree()
+	useroption = input("Do you want to save or load a summoner? ")
+	if useroption == "yes" or useroption == "y":
+		saveplayer()
 	else:
+		sumname = input('Your summoner name: ')
 		launchstattree()
 
 
@@ -113,25 +112,27 @@ def statgatherer():
 # allows user to save player, wipe list
 
 def saveplayer():
-	userchoice = input("Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
-	if userchoice == '1':
-		playername = input("What is the players name?\n")
-		players = open("players.txt", "a+")
-		players.write(playername)
-		players.write(",")
-		players.close()
-	elif userchoice == '2':
-		players = open("players.txt", "w+")
-		players.write("")
-		players.close()
-	elif userchoice == '3':
-		getsavedplayer()
-	elif userchoice == '4':
-		return
-	else:
-		print("Please select a valid option.")
-		waitforkey()
-		sys.exit("Valid number not selected.")
+	saveloop = True
+	while saveloop:
+		userchoice = input("Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
+		if userchoice == '1':
+			playername = input("What is the players name?\n")
+			players = open("players.txt", "a+")
+			players.write(playername)
+			players.write(",")
+			players.close()
+		elif userchoice == '2':
+			players = open("players.txt", "w+")
+			players.write("")
+			players.close()
+		elif userchoice == '3':
+			getsavedplayer()
+		elif userchoice == '4':
+			return
+		else:
+			print("Please select a valid option.")
+			waitforkey()
+			sys.exit("Valid number not selected.")
 
 
 # returns list of saved players
@@ -145,4 +146,4 @@ def getsavedplayer():
 	title = 'Please choose the summoner to load in: '
 	sumname, index = pick(lines, title)
 	print("You have picked", sumname, "will now search for stats.")
-	runmain()
+	launchstattree()
