@@ -1,5 +1,5 @@
 from pathlib import Path
-import functions as fun
+from lib import functions as fun
 
 # set path of api settings file
 apisettingspath = Path("lib/apisettings.py")
