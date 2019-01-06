@@ -2,7 +2,6 @@ from riotwatcher import RiotWatcher
 import requests
 import sys
 from pick import pick
-import apisettings
 
 
 # main program
@@ -20,6 +19,8 @@ def runmain():
 
 def launchstattree():
 	global element
+	from lib import apisettings
+
 	watcher = RiotWatcher(apisettings.yourapikey)
 
 	serverselect()
