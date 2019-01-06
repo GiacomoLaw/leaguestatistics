@@ -129,11 +129,11 @@ def saveplayer():
 # returns list of saved players
 
 def getsavedplayer():
-	text_file = open("players.txt", "r")
-	lines = text_file.read().split(',')
-	text_file.close()
+	playerfile = open("players.txt", "r")
+	lines = playerfile.read().split(',')
+	playerfile.close()
+	filelength = len(lines)
+	del lines[filelength - 1]
 	for index, lines in enumerate(lines, start=1):
 		print("\n", index, "-", lines)
-
-
-# todo: remove last blank line
+	selectedplayer = input("Select the number of the player. ")
