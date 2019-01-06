@@ -18,7 +18,4 @@ install:
 
 script:
   - cd lib
-  - coverage run functions.py
-
-after_success:
-  - codecov
+  - python functions.py
