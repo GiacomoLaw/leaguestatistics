@@ -7,7 +7,7 @@ import sys
 def runmain():
 	global element
 	from riotwatcher import RiotWatcher
-	from lib import apisettings
+	import apisettings
 
 	sumname = input('Your summoner name: ')
 
