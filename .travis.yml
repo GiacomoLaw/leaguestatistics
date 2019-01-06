@@ -14,7 +14,11 @@ matrix:
 install:
   - pip install riotwatcher
   - pip install pick
+  - pip install codecov
 
 script:
   - cd lib
   - python functions.py
+
+after_success:
+  - codecov
