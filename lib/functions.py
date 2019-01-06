@@ -2,7 +2,7 @@ from riotwatcher import RiotWatcher
 import requests
 import sys
 from pick import pick
-from lib import apisettings
+import apisettings
 
 
 # main program
