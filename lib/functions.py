@@ -46,6 +46,7 @@ def waitforkey():
 
 def serverselect():
 	global my_region
+	from pathlib import Path
 	url = "https://raw.githubusercontent.com/GiacomoLaw/lolstats/master/lib/serverlist.json"
 	data = requests.get(url).json()
 	for index, regionelement in enumerate(data, start=1):
@@ -75,16 +76,19 @@ def serverselect():
 	elif server_choice == '8':
 		my_region = 'na'
 		print('\nServer set to North America.')
+		my_region = 'na1'
 	elif server_choice == '9':
+		print('\nServer set to old North America')
+	elif server_choice == '10':
 		my_region = 'oc1'
 		print('\nServer set to Oceania.')
-	elif server_choice == '10':
+	elif server_choice == '11':
 		my_region = 'tr1'
 		print('\nServer set to Turkey.')
-	elif server_choice == '11':
+	elif server_choice == '12':
 		my_region = 'ru'
 		print('\nServer set to Russia.')
-	elif server_choice == '12':
+	elif server_choice == '13':
 		my_region = 'pbe1'
 		print('\nServer set to Public Beta.')
 	else:

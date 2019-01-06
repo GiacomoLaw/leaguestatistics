@@ -6,6 +6,7 @@
   {"richname":  "Latin America North", "region":  "lan", "platform":  "la1"},
   {"richname":  "Latin America South", "region":  "las", "platform":  "la2"},
   {"richname":  "North America", "region":  "na", "platform":  "na"},
+  {"richname":  "Old North America - Use if you played before season 3/4 if above option doesn't work.", "region":  "na", "platform":  "na1"},
   {"richname":  "Oceania", "region":  "oce", "platform":  "oc1"},
   {"richname":  "Turkey", "region":  "tr", "platform":  "tr1"},
   {"richname":  "Russia", "region":  "ru", "platform":  "ru"},
