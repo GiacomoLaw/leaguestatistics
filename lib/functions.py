@@ -4,17 +4,22 @@ import sys
 from pick import pick
 
 
-# main program
+# launches menu, using pick to allow the player to select what they want to do
 
 def runmain():
 	global sumname
 
-	useroption = input("Do you want to save or load a summoner? ")
-	if useroption == "yes" or useroption == "y":
-		saveplayer()
-	else:
+	title = "Menu - What do you want to do? Choose an options below."
+	options = ['Run program', 'Load summoner']
+	option, index = pick(options, title)
+	print(option)
+	if option == "Run program":
 		sumname = input('Your summoner name: ')
 		launchstattree()
+	elif option == "Load summoner":
+		saveplayer()
+	else:
+		print("Error - did not pick a vaild option")
 
 
 def launchstattree():
@@ -46,7 +51,6 @@ def waitforkey():
 
 def serverselect():
 	global my_region
-	from pathlib import Path
 	url = "https://raw.githubusercontent.com/GiacomoLaw/lolstats/master/lib/serverlist.json"
 	data = requests.get(url).json()
 	for index, regionelement in enumerate(data, start=1):
