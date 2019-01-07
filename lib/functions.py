@@ -19,7 +19,7 @@ def runmain():
 	elif option == "Load summoner":
 		saveplayer()
 	else:
-		print("Error - did not pick a vaild option")
+		print("Error - did not pick a valid option")
 
 
 def launchstattree():
