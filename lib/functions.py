@@ -126,12 +126,12 @@ def saveplayer():
 		userchoice = input("Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
 		if userchoice == '1':
 			playername = input("What is the players name?\n")
-			players = open("players.txt", "a+")
+			players = open("lib/players.txt", "a+")
 			players.write(playername)
 			players.write(",")
 			players.close()
 		elif userchoice == '2':
-			players = open("players.txt", "w+")
+			players = open("lib/players.txt", "w+")
 			players.write("")
 			players.close()
 		elif userchoice == '3':
@@ -148,7 +148,7 @@ def saveplayer():
 
 def getsavedplayer():
 	global sumname
-	playerfile = open("players.txt", "r")
+	playerfile = open("lib/players.txt", "r")
 	lines = playerfile.read().split(',')
 	playerfile.close()
 	del lines[-1]
