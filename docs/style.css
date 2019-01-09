@@ -49,5 +49,6 @@ li a:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
+  width: 600px;
+  max-width: 100%;
 }
