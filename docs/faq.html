@@ -1,76 +1,78 @@
 <!DOCTYPE html>
-<html>
- <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>League Statistics - FAQ</title>
-    <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
-  </head>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>League Statistics - FAQ</title>
+	<link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
+</head>
 <body>
-  <div class="topnav">
-    <a href="index.html">Home</a>
-    <a class="active" href="faq.html">FAQ</a>
-    <a href="contact.html">Contact</a>
-  </div>
- <div class="pad">
-  <h2>FAQ</h2>
-   <p>An FAQ for any commonly asked questions about League Statistics. It also holds the beginner guide for people completely new to Python.</p>
-   <h3>Beginners guide</h3>
-   <p>If you've never used Python before, this is the right place to start. Firstly, you'll need to install Python. Note that on Linux and MacOS it come pre-installed. I would recommend installing version 3.6.8, which is the version I am using to develop. You can download that <a href="https://www.python.org/downloads/release/python-368/" target="_blank">here</a>. Note that all versions, including the latest, are supported.
-    <br /><br />
-    Once you've downloaded Python, double click on it to get it installing. Before moving on, <strong>make sure you enable Python to be installed to path</strong>. This will allow you to interact with Python in the command line and install modules via pip.
-    <br /><br/>
-    <img src="img/installtopath.png" title="You must install Python to path." width="90%" class="center-demo-image"/>
-    <br /><br />
-    Now that you've installed Python, you'll need to download League Statistics. To do so, go to <a href="https://github.com/GiacomoLaw/leaguestatistics/releases" target="_blank">latest releases</a> and download the latest one as a .zip. When it's downloaded, extract it and you'll see the files. Notice that if you try and run main.py, you'll get an error. That's because we need to install the modules now.
-    <br /><br />
-    We need three modules (four if you are on Windows) to get League Statistics working. Go into your command line, and type in <code>pip install riotwatcher</code>. This installs <a href="https://github.com/pseudonym117/Riot-Watcher" target="_blank">RiotWatcher</a>, which is the Python library that is used in the program to interact with the API. Once RiotWatcher has finished downloading, type in <code>pip install pick</code>. This installs Pick, which is used to make the menus. <strong>If you are on Windows, you'll need to also type in <code>pip install windows-curses</code></strong>. Windows does not come preinstalled with Curses like MacOS and Linux so this is a necessary step. Finally, type in <code>pip install requests</code> to get the requests library.
-    <br /><br />
-    Now you'll be able to run the script. Double click on <code>main.py</code>. A window will appear, and you will be asked to enter your Riot API key. To get this, go to <a href="https://developer.riotgames.com/" target="_blank">the Riot Developer site</a> and sign in or register. Once you have, scroll down until you see the password looking like box, and copy and paste what appears there into the input in League Statistics.
-    <br /><br />
-    <img src="img/riotkey.png" title="The Riot Api key." width="90%" class="center-demo-image"/>
-    <br /><br />
-    Make sure that your interface looks like below, then press enter. Note that after 24 hours, you'll have to refresh your API key in the Riot Dev site, and then go into <code>/lib/apisettings.py</code> and paste in the new API key between the two <code>"</code>.
-    <br /><br />
-    <img src="img/apikeycreation.png" title="Adding the API key." width="90%" class="center-demo-image"/>
-    <br /><br />
-    You'll then enter the menu, and you'll be able to use League Statistics. Enjoy! If you face any issues please comment below in the Disqus section and I will reply within 24 hours.
-  </p>
-  <h3>Getting a permanent API key</h3>
-  <p>You can get an permanent API key by going to <a href="https://developer.riotgames.com/" target="_blank">the Riot Developer site</a>, and selecting the button at the top right that says 'Register Project'. Click register app on the middle option, call it whatever you want and add a description. Request the standard APIs, and then submit. After a few days your request may be approved or rejected, and if it is approved, replace your current API key with the new permanent one. Make sure to never share your API key with anyone, even the temporary ones.
-  <h3>Error messages and common issues</h3>
-  <h4>403 Client Error: Forbidden URL</h4>
-  <p><code>requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://jp1.api.riotgames.com/lol/summoner/v4/summoners/by-name/malagith</code>
-    <br /><br />
-    If you are encountering an issue like this, this means that you either inputted the API key in correctly, your API key expired, or you did not select the correct server. Make sure you selected the correct server and your API key is up to date, and try again.</p>
-  <h4>Value error: Options should not be an empty list</h4>
-  <p><code>ValueError: options should not be an empty list</code>
-    <br /><br />
-    This is caused by the players list being empty. Don't try to load the players list when you haven't added anyone, try selecting 1 next time and adding a player. This will be fixed in a future update.
- </div>
- <div id="disqus_thread"></div>
-<script>
-  /**
-  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-  /*
-  var disqus_config = function () {
-  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-  };
-  */
-  (function() { // DON'T EDIT BELOW THIS LINE
-  var d = document, s = d.createElement('script');
-  s.src = 'https://league-statistics.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  <footer>
-    <p class="pad">Site by <a href="https://giacomolaw.me">Giacomo Lawrance</a></p>
-  </footer>
-  <script id="dsq-count-scr" src="//league-statistics.disqus.com/count.js" async></script>
-</body>
+	<div class="topnav">
+		<a href="index.html">Home</a>
+		<a class="active" href="faq.html">FAQ</a>
+		<a href="contact.html">Contact</a>
+	</div>
+	<section style="max-width: 1200px; margin-left: auto; margin-right: auto;">
+		<h2>FAQ</h2>
+		<p>An FAQ for any commonly asked questions about League Statistics. It also holds the beginner guide for people completely new to Python.</p>
+		<h3>Beginners guide</h3>
+		<p>If you've never used Python before, this is the right place to start. Firstly, you'll need to install Python. Note that on Linux and MacOS it come pre-installed. I would recommend installing version 3.6.8, which is the version I am using to develop. You can download that <a href="https://www.python.org/downloads/release/python-368/" target="_blank">here</a>. Note that all versions, including the latest, are supported.
+			<br /><br />
+			Once you've downloaded Python, double click on it to get it installing. Before moving on, <strong>make sure you enable Python to be installed to path</strong>. This will allow you to interact with Python in the command line and install modules via pip.
+			<br /><br/>
+			<img src="img/installtopath.png" title="You must install Python to path." width="90%" class="center-demo-image" alt=""/>
+			<br /><br />
+			Now that you've installed Python, you'll need to download League Statistics. To do so, go to <a href="https://github.com/GiacomoLaw/leaguestatistics/releases" target="_blank">latest releases</a> and download the latest one as a .zip. When it's downloaded, extract it and you'll see the files. Notice that if you try and run main.py, you'll get an error. That's because we need to install the modules now.
+			<br /><br />
+			We need three modules (four if you are on Windows) to get League Statistics working. Go into your command line, and type in <code>pip install riotwatcher</code>. This installs <a href="https://github.com/pseudonym117/Riot-Watcher" target="_blank">RiotWatcher</a>, which is the Python library that is used in the program to interact with the API. Once RiotWatcher has finished downloading, type in <code>pip install pick</code>. This installs Pick, which is used to make the menus. <strong>If you are on Windows, you'll need to also type in <code>pip install windows-curses</code></strong>. Windows does not come preinstalled with Curses like MacOS and Linux so this is a necessary step. Finally, type in <code>pip install requests</code> to get the requests library.
+			<br /><br />
+			Now you'll be able to run the script. Double click on <code>main.py</code>. A window will appear, and you will be asked to enter your Riot API key. To get this, go to <a href="https://developer.riotgames.com/" target="_blank">the Riot Developer site</a> and sign in or register. Once you have, scroll down until you see the password looking like box, and copy and paste what appears there into the input in League Statistics.
+			<br /><br />
+			<img src="img/riotkey.png" title="The Riot Api key." width="90%" class="center-demo-image" alt=""/>
+			<br /><br />
+			Make sure that your interface looks like below, then press enter. Note that after 24 hours, you'll have to refresh your API key in the Riot Dev site, and then go into <code>/lib/apisettings.py</code> and paste in the new API key between the two <code>"</code>.
+			<br /><br />
+			<img src="img/apikeycreation.png" title="Adding the API key." width="90%" class="center-demo-image" alt=""/>
+			<br /><br />
+			You'll then enter the menu, and you'll be able to use League Statistics. Enjoy! If you face any issues please comment below in the Disqus section and I will reply within 24 hours.
+		</p>
+		<h3>Getting a permanent API key</h3>
+		<p>You can get an permanent API key by going to <a href="https://developer.riotgames.com/" target="_blank">the Riot Developer site</a>, and selecting the button at the top right that says 'Register Project'. Click register app on the middle option, call it whatever you want and add a description. Request the standard APIs, and then submit. After a few days your request may be approved or rejected, and if it is approved, replace your current API key with the new permanent one. Make sure to never share your API key with anyone, even the temporary ones.
+		<h3>Error messages and common issues</h3>
+		<h4>403 Client Error: Forbidden URL</h4>
+		<p><code>requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://jp1.api.riotgames.com/lol/summoner/v4/summoners/by-name/malagith</code>
+			<br /><br />
+			If you are encountering an issue like this, this means that you either inputted the API key in correctly, your API key expired, or you did not select the correct server. Make sure you selected the correct server and your API key is up to date, and try again.</p>
+		<h4>Value error: Options should not be an empty list</h4>
+		<p><code>ValueError: options should not be an empty list</code>
+			<br /><br />
+			This is caused by the players list being empty. Don't try to load the players list when you haven't added anyone, try selecting 1 next time and adding a player. This will be fixed in a future update.
+		<div id="disqus_thread"></div>
+		<script>
+			/**
+			 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+			 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+			/*
+			var disqus_config = function () {
+			this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+			this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+			};
+			*/
+			(function() { // DON'T EDIT BELOW THIS LINE
+				var d = document, s = d.createElement('script');
+				s.src = 'https://league-statistics.disqus.com/embed.js';
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+	</section>
+	<footer>
+		<p class="pad">Site by <a href="https://giacomolaw.me" target="_blank">Giacomo Lawrance</a></p>
+	</footer>
+	<script id="dsq-count-scr" src="//league-statistics.disqus.com/count.js" async></script>
+	</body>
 </html>
