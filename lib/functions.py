@@ -1,4 +1,4 @@
-from riotwatcher import RiotWatcher, ApiError
+from riotwatcher import RiotWatcher
 import requests
 import sys
 from pick import pick
@@ -121,6 +121,7 @@ def statgatherer():
 # allows user to save player, wipe list
 
 def saveplayer():
+	global saveloop
 	saveloop = True
 	while saveloop:
 		userchoice = input("Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
@@ -148,11 +149,16 @@ def saveplayer():
 
 def getsavedplayer():
 	global sumname
-	playerfile = open("lib/players.txt", "r")
-	lines = playerfile.read().split(',')
-	playerfile.close()
-	del lines[-1]
-	title = 'Please choose the summoner to load in: '
-	sumname, index = pick(lines, title)
-	print("You have picked", sumname, "will now search for stats.")
-	launchstattree()
+	global saveloop
+	try:
+		playerfile = open("lib/players.txt", "r")
+		lines = playerfile.read().split(',')
+		playerfile.close()
+		del lines[-1]
+		title = 'Please choose the summoner to load in: '
+		sumname, index = pick(lines, title)
+		print("You have picked", sumname, "will now search for stats.")
+		launchstattree()
+	except FileNotFoundError:
+		print("\n\nYou need to create a list of saved players.\n\n")
+		return
