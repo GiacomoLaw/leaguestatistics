@@ -26,7 +26,7 @@
 			<br /><br />
 			Now that you've installed Python, you'll need to download League Statistics. To do so, go to <a href="https://github.com/GiacomoLaw/leaguestatistics/releases" target="_blank">latest releases</a> and download the latest one as a .zip. When it's downloaded, extract it and you'll see the files. Notice that if you try and run main.py, you'll get an error. That's because we need to install the modules now.
 			<br /><br />
-			We need three modules (four if you are on Windows) to get League Statistics working. Go into your command line, and type in <code>pip install riotwatcher</code>. This installs <a href="https://github.com/pseudonym117/Riot-Watcher" target="_blank">RiotWatcher</a>, which is the Python library that is used in the program to interact with the API. Once RiotWatcher has finished downloading, type in <code>pip install pick</code>. This installs Pick, which is used to make the menus. <strong>If you are on Windows, you'll need to also type in <code>pip install windows-curses</code></strong>. Windows does not come preinstalled with Curses like MacOS and Linux so this is a necessary step. Finally, type in <code>pip install requests</code> to get the requests library.
+			We need three modules (four if you are on Windows) to get League Statistics working. You can either run <code>python requirements.py</code>, or go into your command line, and type in <code>pip install riotwatcher</code>. This installs <a href="https://github.com/pseudonym117/Riot-Watcher" target="_blank">RiotWatcher</a>, which is the Python library that is used in the program to interact with the API. Once RiotWatcher has finished downloading, type in <code>pip install pick</code>. This installs Pick, which is used to make the menus. <strong>If you are on Windows, you'll need to also type in <code>pip install windows-curses</code></strong>. Windows does not come preinstalled with Curses like MacOS and Linux so this is a necessary step. Finally, type in <code>pip install requests</code> to get the requests library.
 			<br /><br />
 			Now you'll be able to run the script. Double click on <code>main.py</code>. A window will appear, and you will be asked to enter your Riot API key. To get this, go to <a href="https://developer.riotgames.com/" target="_blank">the Riot Developer site</a> and sign in or register. Once you have, scroll down until you see the password looking like box, and copy and paste what appears there into the input in League Statistics.
 			<br /><br />
@@ -50,5 +50,6 @@
 			<br /><br />
 			This is caused by the players list being empty. Don't try to load the players list when you haven't added anyone, try selecting 1 next time and adding a player. This will be fixed in a future update.
 		</p>
-	</body>
+	</section>
+</body>
 </html>
