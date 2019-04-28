@@ -4,8 +4,7 @@ import sys
 from pick import pick
 
 
-# launches menu, using pick to allow the player to select what they want to do
-
+# Launches menu, using pick to allow the player to select what they want to do
 def runmain():
 	global sumname
 
@@ -22,6 +21,7 @@ def runmain():
 		print("Error - did not pick a valid option")
 
 
+# Launch stat tree - load server list, then load rank stats
 def launchstattree():
 	global element
 	from lib import apisettings
@@ -41,14 +41,12 @@ def launchstattree():
 		print('Error - no data found - check server, and summoner name.')
 
 
-# wait for a key press
-
+# Wait for a key press
 def waitforkey():
 	input("\n\nPress Enter to continue...\n")
 
 
-# server select process - starts at listing servers
-
+# Server select process - starts at listing servers
 def serverselect():
 	global my_region
 	url = "https://raw.githubusercontent.com/GiacomoLaw/lolstats/master/lib/serverlist.json"
@@ -101,8 +99,7 @@ def serverselect():
 		sys.exit("Valid number not selected.")
 
 
-# gathers stats
-
+# Gathers stats
 def statgatherer():
 	global element
 	current_rank = (element['tier']) + '  ' + (element['rank'])
@@ -118,13 +115,13 @@ def statgatherer():
 	sys.exit(0)
 
 
-# allows user to save player, wipe list
-
+# Allows user to save player, wipe list
 def saveplayer():
 	global saveloop
 	saveloop = True
 	while saveloop:
-		userchoice = input("Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
+		userchoice = input(
+			"Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
 		if userchoice == '1':
 			playername = input("What is the players name?\n")
 			players = open("lib/players.txt", "a+")
@@ -145,8 +142,7 @@ def saveplayer():
 			sys.exit("Valid number not selected.")
 
 
-# returns list of saved players
-
+# Returns list of saved players
 def getsavedplayer():
 	global sumname
 	global saveloop
