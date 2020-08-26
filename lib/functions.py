@@ -118,9 +118,11 @@ def saveplayer():
 	global saveloop
 	saveloop = True
 	while saveloop:
-		userchoice = input(
-			"Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
-		if userchoice == '1':
+		title = "Choose option?"
+		options = ['Add player', 'Wipe list', 'View list of saved players', 'Leave']
+		saveoption, index = pick(options, title)
+		print(saveoption)
+		if saveoption == 'Add player':
 			playername = input("What is the players name?\n")
 			if playername == "":
 				print("You must input a name.")
@@ -129,18 +131,22 @@ def saveplayer():
 				players.write(playername)
 				players.write(",")
 				players.close()
-		elif userchoice == '2':
-			players = open("lib/players.txt", "w+")
-			players.write("")
-			players.close()
-		elif userchoice == '3':
+		elif saveoption == 'Wipe list':
+			title = "Are you sure?"
+			options = ['Yes', 'No']
+			confirm, index = pick(options, title)
+			if confirm == 'Yes':
+				players = open("lib/players.txt", "w+")
+				players.write("")
+				players.close()
+				print("List wiped")
+			else:
+				return
+		elif saveoption == 'View list of saved players':
 			getsavedplayer()
-		elif userchoice == '4':
+		elif saveoption == 'Leave':
+			saveloop = False
 			return
-		else:
-			print("Please select a valid option.")
-			waitforkey()
-			sys.exit("Valid number not selected.")
 
 
 # Returns list of saved players
