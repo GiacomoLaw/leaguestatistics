@@ -1,13 +1,14 @@
 from pathlib import Path
 from lib import functions
 
-# set path of api settings file
+# Set path of api settings file
 apisettingspath = Path("lib/apisettings.py")
 
-# check if the api file exists - if it does, run the main program - if it doesn't, create it
+# Check if the api file exists - if it does, run the main program - if it doesn't, create it
 if apisettingspath.exists():
 	print("API file present - note that the API key expires every 24 hours")
 	functions.runmain()
+# If no API found, create a apisettings file, and then ask the user for their key
 else:
 	print("No API file - creating one now")
 	createfile = open("lib/apisettings.py", "w+")

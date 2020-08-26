@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/GiacomoLaw/leaguestatistics.svg?branch=master)](https://travis-ci.com/GiacomoLaw/leaguestatistics) [![](https://img.shields.io/badge/python-3.4+-blue.svg)](https://www.python.org/download/releases/3.4.0/) [![Waffle.io - Columns and their card count](https://badge.waffle.io/GiacomoLaw/leaguestatistics.svg?columns=all)](https://waffle.io/GiacomoLaw/leaguestatistics)
+[![Build Status](https://travis-ci.com/GiacomoLaw/leaguestatistics.svg?branch=master)](https://travis-ci.com/GiacomoLaw/leaguestatistics) [![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/download/releases/3.8.0/)
 # League Statistics
 
 Statistics for a specific player on LoL
@@ -11,7 +11,7 @@ Install [Riot Watcher](https://github.com/pseudonym117/Riot-Watcher) via PIP: `p
 
 Place your API key from Riot in `apisettings.py`. You can get it [here](https://developer.riotgames.com/).
 
-Run `lolstats.py`, and type in the summoner name you want. Stats for rank solo are gathered by default, more options will be added at a later date.
+Run `main.py`, and type in the summoner name you want. Stats for rank solo are gathered by default, more options will be added at a later date.
 
 Make sure that the server is correct (na1 for North America). Options to choose your server will be added at a later date.
 
