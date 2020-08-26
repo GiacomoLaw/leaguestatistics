@@ -10,7 +10,7 @@ def runmain():
 	global sumname
 
 	title = "Menu - What do you want to do? Choose an options below."
-	options = ['Run program', 'Load summoner']
+	options = ['Run program', 'Load summoner', 'Close']
 	option, index = pick(options, title)
 	print(option)
 	if option == "Run program":
@@ -19,8 +19,8 @@ def runmain():
 		launchstattree()
 	elif option == "Load summoner":
 		saveplayer()
-	else:
-		print("Error - did not pick a valid option")
+	elif option == "Leave":
+		exit()
 
 
 # Launch stat tree - load server list, then load rank stats
@@ -110,7 +110,7 @@ def statgatherer():
 	print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
 	print('Win rate: ', rate, '%')
 	waitforkey()
-	sys.exit(0)
+	runmain()
 
 
 # Allows user to save player, wipe list
@@ -126,6 +126,7 @@ def saveplayer():
 			playername = input("What is the players name?\n")
 			if playername == "":
 				print("You must input a name.")
+				waitforkey()
 			else:
 				players = open("lib/players.txt", "a+")
 				players.write(playername)
@@ -140,6 +141,7 @@ def saveplayer():
 				players.write("")
 				players.close()
 				print("List wiped")
+				waitforkey()
 			else:
 				return
 		elif saveoption == 'View list of saved players':
@@ -152,7 +154,6 @@ def saveplayer():
 # Returns list of saved players
 def getsavedplayer():
 	global sumname
-	global saveloop
 	try:
 		playerfile = open("lib/players.txt", "r")
 		lines = playerfile.read().split(',')
