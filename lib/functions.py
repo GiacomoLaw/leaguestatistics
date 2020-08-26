@@ -10,7 +10,7 @@ def runmain():
 	global sumname
 
 	title = "Menu - What do you want to do? Choose an options below."
-	options = ['Run program', 'Load summoner']
+	options = ['Run program', 'Load summoner', 'Close']
 	option, index = pick(options, title)
 	print(option)
 	if option == "Run program":
@@ -19,8 +19,8 @@ def runmain():
 		launchstattree()
 	elif option == "Load summoner":
 		saveplayer()
-	else:
-		print("Error - did not pick a valid option")
+	elif option == "Leave":
+		exit()
 
 
 # Launch stat tree - load server list, then load rank stats
@@ -51,54 +51,50 @@ def waitforkey():
 # Server select process - starts at listing servers
 def serverselect():
 	global my_region
-	url = "https://raw.githubusercontent.com/GiacomoLaw/lolstats/master/lib/serverlist.json"
-	data = requests.get(url).json()
-	for index, regionelement in enumerate(data, start=1):
-		print("\n{}. {}".format(index, regionelement['richname']))
-	server_choice = input("\n\nWhat server do you want? Enter the number. ")
-	if server_choice == '1':
+	title = "What server do you want?"
+	servers = ['Europe West', 'Brazil', 'Europe Nordic and East',
+				'Japan', 'Korea', 'Latin America North',
+				'Latin America South', 'North America',
+				'Oceania', 'Turkey', 'Russia', 'Public Beta']
+	serveroption, index = pick(servers, title)
+	print(serveroption)
+	if serveroption == 'Brazil':
 		my_region = 'br1'
 		print('\nServer set to Brazil.')
-	elif server_choice == '2':
+	elif serveroption == 'Europe Nordic and East':
 		my_region = 'eun1'
 		print('\nServer set to Europe Nordic and East.')
-	elif server_choice == '3':
+	elif serveroption == 'Europe West':
 		my_region = 'euw1'
 		print('\nServer set to Europe West.')
-	elif server_choice == '4':
+	elif serveroption == 'Japan':
 		my_region = 'jp1'
 		print('\nServer set to Japan.')
-	elif server_choice == '5':
+	elif serveroption == 'Korea':
 		my_region = 'kr1'
 		print('\nServer set to Korea.')
-	elif server_choice == '6':
+	elif serveroption == 'Latin America North':
 		my_region = 'la1'
 		print('\nServer set to Latin America North.')
-	elif server_choice == '7':
+	elif serveroption == 'Latin America South':
 		my_region = 'la2'
 		print('\nServer set to Latin America South.')
-	elif server_choice == '8':
+	elif serveroption == 'North America':
 		my_region = 'na'
 		print('\nServer set to North America.')
 		my_region = 'na1'
-	elif server_choice == '9':
-		print('\nServer set to old North America')
-	elif server_choice == '10':
+	elif serveroption == 'Oceania':
 		my_region = 'oc1'
 		print('\nServer set to Oceania.')
-	elif server_choice == '11':
+	elif serveroption == 'Turkey':
 		my_region = 'tr1'
 		print('\nServer set to Turkey.')
-	elif server_choice == '12':
+	elif serveroption == 'Russia':
 		my_region = 'ru'
 		print('\nServer set to Russia.')
-	elif server_choice == '13':
+	elif serveroption == 'Public Beta':
 		my_region = 'pbe1'
 		print('\nServer set to Public Beta.')
-	else:
-		print('\nError. Select one of the numbers.')
-		waitforkey()
-		sys.exit("Valid number not selected.")
 
 
 # Gathers stats
@@ -114,7 +110,7 @@ def statgatherer():
 	print('Wins: ', wins, '| Losses: ', losses, '| Total games: ', total_games)
 	print('Win rate: ', rate, '%')
 	waitforkey()
-	sys.exit(0)
+	runmain()
 
 
 # Allows user to save player, wipe list
@@ -122,32 +118,42 @@ def saveplayer():
 	global saveloop
 	saveloop = True
 	while saveloop:
-		userchoice = input(
-			"Choose option?\n\n1. Add player\n\n2. Wipe list\n\n3. View list of saved players\n\n4. Leave\n")
-		if userchoice == '1':
+		title = "Choose option?"
+		options = ['Add player', 'Wipe list', 'View list of saved players', 'Leave']
+		saveoption, index = pick(options, title)
+		print(saveoption)
+		if saveoption == 'Add player':
 			playername = input("What is the players name?\n")
-			players = open("lib/players.txt", "a+")
-			players.write(playername)
-			players.write(",")
-			players.close()
-		elif userchoice == '2':
-			players = open("lib/players.txt", "w+")
-			players.write("")
-			players.close()
-		elif userchoice == '3':
+			if playername == "":
+				print("You must input a name.")
+				waitforkey()
+			else:
+				players = open("lib/players.txt", "a+")
+				players.write(playername)
+				players.write(",")
+				players.close()
+		elif saveoption == 'Wipe list':
+			title = "Are you sure?"
+			options = ['Yes', 'No']
+			confirm, index = pick(options, title)
+			if confirm == 'Yes':
+				players = open("lib/players.txt", "w+")
+				players.write("")
+				players.close()
+				print("List wiped")
+				waitforkey()
+			else:
+				return
+		elif saveoption == 'View list of saved players':
 			getsavedplayer()
-		elif userchoice == '4':
+		elif saveoption == 'Leave':
+			saveloop = False
 			return
-		else:
-			print("Please select a valid option.")
-			waitforkey()
-			sys.exit("Valid number not selected.")
 
 
 # Returns list of saved players
 def getsavedplayer():
 	global sumname
-	global saveloop
 	try:
 		playerfile = open("lib/players.txt", "r")
 		lines = playerfile.read().split(',')
