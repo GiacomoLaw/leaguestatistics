@@ -1,7 +1,8 @@
-from riotwatcher import RiotWatcher
+from riotwatcher import LolWatcher, ApiError
 import requests
 import sys
 from pick import pick
+from string import whitespace
 
 
 # Launches menu, using pick to allow the player to select what they want to do
@@ -14,6 +15,7 @@ def runmain():
 	print(option)
 	if option == "Run program":
 		sumname = input('Your summoner name: ')
+		sumname = sumname.translate(dict.fromkeys(map(ord, whitespace)))
 		launchstattree()
 	elif option == "Load summoner":
 		saveplayer()
@@ -26,13 +28,13 @@ def launchstattree():
 	global element
 	from lib import apisettings
 
-	watcher = RiotWatcher(apisettings.yourapikey, v4=True)
+	lol_watcher = LolWatcher(apisettings.yourapikey)
 
 	serverselect()
 
-	me = watcher.summoner.by_name(my_region, sumname)
+	me = lol_watcher.summoner.by_name(my_region, sumname)
 
-	my_ranked_stats = watcher.league.positions_by_summoner(my_region, me['id'])
+	my_ranked_stats = lol_watcher.league.by_summoner(my_region, me['id'])
 
 	for element in my_ranked_stats:
 		if element['queueType'] == 'RANKED_SOLO_5x5':
