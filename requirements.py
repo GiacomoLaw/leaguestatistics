@@ -5,7 +5,7 @@ from pip._internal import main
 _all_ = [
 	"pick == 0.6.4",
 	"requests == 2.21.0",
-	"riotwatcher == 3.0.0",
+	"riotwatcher == 3.2.2",
 ]
 
 # Modules required on Windows
